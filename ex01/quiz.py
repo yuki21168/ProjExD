@@ -14,7 +14,7 @@ def kaitou(ans_lst):
         print("正解！！！")
     else:
         print("出直してい来い")
-    print("解答時間：" + (ed-st).seconds)
+    #print("解答時間：" + (ed-st):.2f秒")
 
 if __name__ == "__main__":
     qa_lst =[
