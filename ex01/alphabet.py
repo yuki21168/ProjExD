@@ -10,7 +10,7 @@ num_of_trials = 2 #最大繰り返し回数
 def shutudai(alphabet):
     #全アルファベットから対象文字を10個選択する。(重複なし)
     all_chars = random.sample(alphabet, num_of_all_chars)
-    print("対象文字：")
+    print("対象文字 ：")
     for c in all_chars:
         print(c, end=" ")
     print()
