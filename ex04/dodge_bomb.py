@@ -125,17 +125,17 @@ def main():
         if tori_rct.colliderect(bomb_rct):
                     root = tk.Tk()
                     root.withdraw()
-                    tkm.showinfo("ねえ今どんな気持ち？","Game Over")#コメントを表示
+                    tkm.showinfo("ドンマイ","Game Over")#コメントを表示
                     return
-        if tori_rct.colliderect(bomb_rct2):
+        elif tori_rct.colliderect(bomb_rct2):
                     root = tk.Tk()
                     root.withdraw()
-                    tkm.showinfo("ねえ今どんな気持ち？","Game Over")#コメントを表示
+                    tkm.showinfo("ドンマイ","Game Over")#コメントを表示
                     return
-        if tori_rct.colliderect(bomb_rct2):
+        elif tori_rct.colliderect(bomb_rct2):
                     root = tk.Tk()
                     root.withdraw()
-                    tkm.showinfo("ねえ今どんな気持ち？","Game Over")#コメントを表示
+                    tkm.showinfo("ドンマイ","Game Over")#コメントを表示
                     return
 
         pg.display.update()
