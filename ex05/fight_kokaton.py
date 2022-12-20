@@ -72,6 +72,24 @@ class Bomb:
         self.vx *= yoko
         self.vy *= tate
         self.blit(scr)
+
+class Enemy:
+    def __init__(self, img_path1, ratio, xy,vxy, scr:Screen):
+        self.sfc = pg.image.load(img_path1)
+        self.sfc = pg.transform.rotozoom(self.sfc, 0, ratio)
+        self.rct = self.sfc.get_rect()
+        self.rct.center = xy
+        self.vx, self.vy = vxy
+
+    def blit(self, scr:Screen):
+        scr.sfc.blit(self.sfc, self.rct)
+
+    def update(self, scr:Screen):
+        self.rct.move_ip(self.vx, self.vy)
+        yoko, tate = check_bound(self.rct, scr.rct)
+        self.vx *= yoko
+        self.vy *= tate
+        self.blit(scr)
 #class Shot(pg.sprite.Sprite):
     #攻撃する
 
@@ -116,6 +134,11 @@ def main():
     kkt = Bird("fig/6.png", 2.0, (900,400))
     kkt.update(scr)
 
+    vx = random.choice([-1,+1])
+    vy  = random.choice([-1,+1])
+    emy = Enemy("fig/alien1.png", 2.0, (300,200),(vx,vy),scr)
+    emy.update(scr)
+
     # 練習５
     bkd_lst = [] #爆弾を5個生成
     bombs = []
@@ -125,6 +148,7 @@ def main():
         vx = random.choice([-1,+1])
         vy  = random.choice([-1,+1])
         bombs.append(Bomb(color,10,(vx,vy),scr))
+    
     #bkd = Bomb((255, 0, 0), 10, (+1, +1), scr)
     #bkd.update(scr)
     
@@ -141,6 +165,11 @@ def main():
             #爆弾を5個生成
             bomb.update(scr)
             if kkt.rct.colliderect(bomb.rct):
+                root = tk.Tk()
+                root.withdraw()
+                tkm.showinfo("ドンマイ","Game Over")#コメントを表示
+                return
+            if kkt.rct.colliderect(emy.rct):
                 root = tk.Tk()
                 root.withdraw()
                 tkm.showinfo("ドンマイ","Game Over")#コメントを表示
