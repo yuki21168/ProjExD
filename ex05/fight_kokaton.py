@@ -117,7 +117,7 @@ def main():
     kkt.update(scr)
 
     # 練習５
-    bkd_lst = []
+    bkd_lst = [] #爆弾を5個生成
     bombs = []
     colors = ["red","green","blue","yellow","magenta"]
     for i in range(5):
@@ -138,7 +138,7 @@ def main():
         
         kkt.update(scr)
         for bomb in bombs:
-            
+            #爆弾を5個生成
             bomb.update(scr)
             if kkt.rct.colliderect(bomb.rct):
                 root = tk.Tk()
